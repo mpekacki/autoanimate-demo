@@ -8,5 +8,12 @@
   "name": "autoanimate-demo",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "61.0"
+  "sourceApiVersion": "61.0",
+  "replacements": [
+    {
+      "filename": "force-app/main/default/lwc/autoAnimate/autoAnimate.js",
+      "stringToReplace": "replaceMeWith@LibraryFromNodeModules",
+      "replaceWithFile": "node_modules/@formkit/auto-animate/index.mjs"
+    }
+  ]
 }

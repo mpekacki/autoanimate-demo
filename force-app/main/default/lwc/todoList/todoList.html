@@ -1,0 +1,47 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <div class="slds-scrollable_y animContainer" style="height: 500px;">
+                <template for:each={items} for:item="item">
+                    <div key={item.id} class="slds-box">
+                        <div class="slds-grid slds-gutters slds-m-bottom_xx-small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="slds-form-element__static">{item.name}</div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-grid slds-grid_vertical-align-end">
+                                <lightning-button-group>
+                                    <lightning-button-icon icon-name="utility:up" alternative-text="Move Up"
+                                        title="Move Up" onclick={handleMoveUp}
+                                        data-id={item.id} disabled={item.canNotMoveUp}></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:down" alternative-text="Move Down"
+                                        title="Move Down" onclick={handleMoveDown}
+                                        data-id={item.id} disabled={item.canNotMoveDown}></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:close" alternative-text="Remove"
+                                        title="Remove" onclick={handleRemoveItem}
+                                        data-id={item.id}></lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <div class="slds-box">
+                    <div class="slds-grid slds-gutters slds-m-bottom_xx-small">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" label="New Task" variant="label-hidden"
+                                placeholder="Enter new task" value={newItemName} onchange={handleNewItemChange}
+                                onkeyup={handleKeyUp}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-grid slds-grid_vertical-align-end">
+                            <lightning-button-group>
+                                <lightning-button label="Add" onclick={handleAddItem}
+                                    variant="brand"></lightning-button>
+                                <lightning-button label="Sort" onclick={handleSortItems}
+                                    disabled={isSorted}></lightning-button>
+                            </lightning-button-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
