@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Movies" icon-name="utility:video" class="slds-m-top_medium">
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-gutters slds-m-bottom_small">
+                <div class="slds-col slds-size_3-of-4">
+                    <lightning-input type="text" label="Search" value={searchTerm} onchange={handleSearch}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <lightning-combobox
+                        label="Sort by"
+                        value={sortBy}
+                        placeholder="Select an option"
+                        options={sortOptions}
+                        onchange={handleSortChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+            <div class="slds-scrollable_y" style="height: 400px; overflow-y: scroll;">
+                <ul class="slds-has-dividers_bottom-space animContainer">
+                    <li class="slds-item">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_2-of-6">Title</div>
+                            <div class="slds-col slds-size_1-of-6">Year</div>
+                            <div class="slds-col slds-size_1-of-6">Rating</div>
+                            <div class="slds-col slds-size_2-of-6">Director</div>
+                        </div>
+                    </li>
+                    <template for:each={filteredMovies} for:item="movie">
+                        <li key={movie.imdbId} class="slds-item">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-size_2-of-6">
+                                    <div class="slds-truncate">
+                                        <a href={movie.imdbUrl} target="_blank">{movie.title}</a>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6">
+                                    <div class="slds-truncate">{movie.year}</div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6">
+                                    <div class="slds-truncate">{movie.rating}</div>
+                                </div>
+                                <div class="slds-col slds-size_2-of-6">
+                                    <div class="slds-truncate">{movie.director}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </lightning-card>
+</template>

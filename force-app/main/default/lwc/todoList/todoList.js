@@ -1,5 +1,5 @@
 import { LightningElement, track } from 'lwc';
-import autoAnimate from 'c/autoAnimate';
+import autoAnimate from 'c/autoanimate';
 
 export default class TodoList extends LightningElement {
     aaInitialized = false;
